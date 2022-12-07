@@ -42,6 +42,6 @@ jobs:
           cache-to: type=inline
       - uses: kualibuild/github-actions/prune-github-package-versions@master
         with:
-          package-name: ksmithut/multi-arch-testing
+          package-name: multi-arch-testing
           min-versions-to-keep: 1
           token: ${{ secrets.GH_TOKEN }}
