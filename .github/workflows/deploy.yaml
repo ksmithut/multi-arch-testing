@@ -40,8 +40,8 @@ jobs:
           tags: ${{ env.BUILD_DOCKER_IMAGE }}:${{ steps.version.outputs.version }},${{ env.BUILD_DOCKER_IMAGE }}:latest
           cache-from: type=registry,ref=${{ env.BUILD_DOCKER_IMAGE }}:latest
           cache-to: type=inline
-      - uses: vlaurin/action-ghcr-prune@main
+      - uses: kualibuild/github-actions/prune-github-package-versions@master
         with:
-          container: multi-arch-testing
-          keep-last: 1
+          package-name: ksmithut/multi-arch-testing
+          min-versions-to-keep: 1
           token: ${{ secrets.GH_TOKEN }}
