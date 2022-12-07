@@ -33,10 +33,15 @@ jobs:
         with:
           context: '.'
           push: true
-          # platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64
           build-args: |
             ${{ inputs.build-args }}
             VERSION=${{steps.version.outputs.version}}
           tags: ${{ env.BUILD_DOCKER_IMAGE }}:${{ steps.version.outputs.version }},${{ env.BUILD_DOCKER_IMAGE }}:latest
           cache-from: type=registry,ref=${{ env.BUILD_DOCKER_IMAGE }}:latest
           cache-to: type=inline
+      - uses: kualibuild/github-actions/prune-github-package-versions@master
+        with:
+          package-name: ${{ env.APP_NAME }}
+          min-versions-to-keep: 1
+          token: ${{ secrets.GH_TOKEN }}
