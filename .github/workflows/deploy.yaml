@@ -44,5 +44,5 @@ jobs:
         with:
           user: true
           package-name: multi-arch-testing
-          min-versions-to-keep: 1
+          min-versions-to-keep: 2
           token: ${{ secrets.GH_TOKEN }}
